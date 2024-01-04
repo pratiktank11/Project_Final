@@ -34,13 +34,13 @@ namespace Project_Final.DAL
 
         #region Method : PR_User_Create_Account
 
-        public bool PR_User_Create_Account(string UserName, string Password)
+        public bool PR_User_Create_Account(User_UserModel model)
         {
             try
             {
                 SqlDatabase sqlDatabase = new SqlDatabase(ConnectionString);
                 DbCommand dbCommand = sqlDatabase.GetStoredProcCommand("PR_SEC_User_SelectUserName");
-                sqlDatabase.AddInParameter(dbCommand, "UserName", SqlDbType.VarChar, UserName);
+                sqlDatabase.AddInParameter(dbCommand, "UserName", SqlDbType.VarChar, model.UserName);
                 DataTable dt = new DataTable();
                 using (IDataReader dr = sqlDatabase.ExecuteReader(dbCommand))
                 {
@@ -50,8 +50,8 @@ namespace Project_Final.DAL
                 else
                 {
                     DbCommand dbCommand1 = sqlDatabase.GetStoredProcCommand("PR_SEC_User_Insert");
-                    sqlDatabase.AddInParameter(dbCommand1, "UserName", SqlDbType.VarChar, UserName);
-                    sqlDatabase.AddInParameter(dbCommand1, "Password", SqlDbType.VarChar, Password);
+                    sqlDatabase.AddInParameter(dbCommand1, "@UserName", SqlDbType.NVarChar, model.UserName);
+                    sqlDatabase.AddInParameter(dbCommand1, "@Password", SqlDbType.NVarChar, model.Password);
                     if (Convert.ToBoolean(sqlDatabase.ExecuteNonQuery(dbCommand1)))
                     {
                         return true;

@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\UserSide\Data\" />
+    <Folder Include="Areas\UserSide\Models\" />
     <Folder Include="Areas\User\Data\" />
   </ItemGroup>
 

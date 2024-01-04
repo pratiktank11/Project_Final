@@ -23,6 +23,11 @@ namespace Project_Final.Areas.User.Controllers
         return View();
     }
 
+        public IActionResult SEC_UserRegister()
+        {
+            return View();
+        }
+
 
     [HttpPost]
     public IActionResult Login(User_UserModel _UserModel)
@@ -87,7 +92,7 @@ namespace Project_Final.Areas.User.Controllers
         public IActionResult SEC_UserSignUp(User_UserModel user_UserModel)
         {
             UserDalBase dal = new UserDalBase();
-            bool IsSuccess = dal.PR_User_Create_Account(user_UserModel.UserName, user_UserModel.Password);
+            bool IsSuccess = dal.PR_User_Create_Account(user_UserModel);
 
             if (IsSuccess)
             {
