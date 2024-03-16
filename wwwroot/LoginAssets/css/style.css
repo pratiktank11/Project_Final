@@ -1236,5 +1236,16 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.car-description p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Truncate with ellipsis */
+}
+
+.full-description {
+    display: none; /* Initially hidden */
+}
+
 /*flex: 0 0 auto;
 width: 70.33333333%;*/

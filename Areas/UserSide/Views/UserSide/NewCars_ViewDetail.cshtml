@@ -1,0 +1,80 @@
+﻿@{
+	Layout = "_Layout";
+}
+@using System.Data
+@model NewCarsFormsModel
+
+@foreach (NewCarsFormsModel NewCars in ViewBag.NewCarsViewDetailList)
+{
+	<div class="container-fluid p-0" style="padding:10% 0% 10% 0%">
+    <header class="bg-dark text-white py-5 mb-5">
+        <div class="container">
+                <h1 class="display-4" style="color:black font-size:135%">@NewCars.BrandName.ToString() @NewCars.CarName.ToString()</h1>
+                <br />
+                <p class="lead" style="font-size:100%">@NewCars.Description.ToString()</p>
+        </div>
+    </header>
+    <br />
+
+    <main class="car-details mx-5">
+        <div class="row align-items-center">
+            <div class="col-md-5" style="margin:0 0 0 5%">
+                    <img src="@Url.Content(@NewCars.ImgURL.ToString())" class="img-fluid" alt="image">
+            </div>
+
+                <div class="col-md-5">
+                    <table class="table table-hover table-dark">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color:black">Price</td>
+                                <td>@NewCars.Price.ToString()&nbsp; &#8377</td>
+                            </tr>
+                            <tr>
+                                <td style="color:black">Engine</td>
+                                <td>@NewCars.EngineType.ToString()</td>
+                            </tr>
+                            <tr>
+                                <td style="color:black">Fuel Type</td>
+                                <td>@NewCars.FuelType.ToString()</td>
+                            </tr>
+                            <tr>
+                                <td style="color:black">Transmission</td>
+                                <td>@NewCars.TransmissionType.ToString()</td>
+                            </tr>
+                            <tr>
+                                <td style="color:black">Seating Capacity</td>
+                                <td>@NewCars.SeatingCapacity.ToString()</td>
+                            </tr>
+                            <tr>
+                                <td style="color:black">Mileage</td>
+                                <td>@NewCars.Mileage.ToString() km/L</td>
+                            </tr>
+                            <tr>
+                                <td style="color:black">Rating</td>
+                                <td>@NewCars.Rating.ToString()&#9733;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+            @* <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Price: <span class="fw-bold">@dataRow["Price"].ToString()</span></li>
+                        <li class="list-group-item">Engine: @dataRow["EngineType"].ToString()</li>
+                        <li class="list-group-item">Fuel Type: @dataRow["FuelType"].ToString()</li>
+                        <li class="list-group-item">Transmission: @dataRow["Transmission"].ToString()</li>
+                        <li class="list-group-item">Seating Capacity: @dataRow["SeatingCapacity"].ToString()</li>
+                        <li class="list-group-item">Mileage:@dataRow["Mileage"].ToString()</li>
+                        <li class="list-group-item">Rating: @dataRow["Rating"].ToString()</li>
+                </ul>
+                <a href="#" class="btn btn-primary mt-3">Schedule a Test Drive</a>
+            </div> *@
+        </div>
+    </main>
+</div>
+}

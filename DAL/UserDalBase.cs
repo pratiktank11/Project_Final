@@ -2,6 +2,8 @@
 using System.Data;
 using Microsoft.Practices.EnterpriseLibrary.Data.Sql;
 using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
 
 namespace Project_Final.DAL
 {
@@ -52,6 +54,7 @@ namespace Project_Final.DAL
                     DbCommand dbCommand1 = sqlDatabase.GetStoredProcCommand("PR_SEC_User_Insert");
                     sqlDatabase.AddInParameter(dbCommand1, "@UserName", SqlDbType.NVarChar, model.UserName);
                     sqlDatabase.AddInParameter(dbCommand1, "@Password", SqlDbType.NVarChar, model.Password);
+                    sqlDatabase.AddInParameter(dbCommand1, "@isAdmin", SqlDbType.Bit, model.isAdmin);
                     if (Convert.ToBoolean(sqlDatabase.ExecuteNonQuery(dbCommand1)))
                     {
                         return true;
@@ -66,6 +69,7 @@ namespace Project_Final.DAL
 
         }
 
-        #endregion
-    }
+		#endregion
+
+	}
 }

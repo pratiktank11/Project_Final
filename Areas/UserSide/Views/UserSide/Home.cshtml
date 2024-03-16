@@ -1,117 +1,69 @@
 ﻿@{
 	Layout = "_Layout";
-}
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="model-search-content">
-				<div class="row">
-					<div class="col-md-offset-1 col-md-2 col-sm-12">
-						<div class="single-model-search">
-							<h2>select year</h2>
-							<div class="model-select-icon">
-								<select class="form-control">
-
-									<option value="default">year</option><!-- /.option-->
-
-									<option value="2018">2018</option><!-- /.option-->
-
-									<option value="2017">2017</option><!-- /.option-->
-									<option value="2016">2016</option><!-- /.option-->
-
-								</select><!-- /.select-->
-							</div><!-- /.model-select-icon -->
-						</div>
-						<div class="single-model-search">
-							<h2>body style</h2>
-							<div class="model-select-icon">
-								<select class="form-control">
-
-									<option value="default">style</option><!-- /.option-->
-
-									<option value="sedan">sedan</option><!-- /.option-->
-
-									<option value="van">van</option><!-- /.option-->
-									<option value="roadster">roadster</option><!-- /.option-->
-
-								</select><!-- /.select-->
-							</div><!-- /.model-select-icon -->
-						</div>
-					</div>
-					<div class="col-md-offset-1 col-md-2 col-sm-12">
-						<div class="single-model-search">
-							<h2>select make</h2>
-							<div class="model-select-icon">
-								<select class="form-control">
-
-									<option value="default">make</option><!-- /.option-->
-
-									<option value="toyota">toyota</option><!-- /.option-->
-
-									<option value="holden">holden</option><!-- /.option-->
-									<option value="maecedes-benz">maecedes-benz.</option><!-- /.option-->
-
-								</select><!-- /.select-->
-							</div><!-- /.model-select-icon -->
-						</div>
-						<div class="single-model-search">
-							<h2>car condition</h2>
-							<div class="model-select-icon">
-								<select class="form-control">
-
-									<option value="default">condition</option><!-- /.option-->
-
-									<option value="something">something</option><!-- /.option-->
-
-									<option value="something">something</option><!-- /.option-->
-									<option value="something">something</option><!-- /.option-->
-
-								</select><!-- /.select-->
-							</div><!-- /.model-select-icon -->
-						</div>
-					</div>
-					<div class="col-md-offset-1 col-md-2 col-sm-12">
-						<div class="single-model-search">
-							<h2>select model</h2>
-							<div class="model-select-icon">
-								<select class="form-control">
-
-									<option value="default">model</option><!-- /.option-->
-
-									<option value="kia-rio">kia-rio</option><!-- /.option-->
-
-									<option value="mitsubishi">mitsubishi</option><!-- /.option-->
-									<option value="ford">ford</option><!-- /.option-->
-
-								</select><!-- /.select-->
-							</div><!-- /.model-select-icon -->
-						</div>
-						<div class="single-model-search">
-							<h2>select price</h2>
-							<div class="model-select-icon">
-								<select class="form-control">
-
-									<option value="default">price</option><!-- /.option-->
-
-									<option value="$0.00">$0.00</option><!-- /.option-->
-
-									<option value="$0.00">$0.00</option><!-- /.option-->
-									<option value="$0.00">$0.00</option><!-- /.option-->
-
-								</select><!-- /.select-->
-							</div><!-- /.model-select-icon -->
-						</div>
-					</div>
-					<div class="col-md-2 col-sm-12">
-						<div class="single-model-search text-center">
-							<button class="welcome-btn model-search-btn" onclick="window.location.href='#'">
-								search
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
+}	
+@* @model FeaturedCarsFormsModel; *@
+@using System.Data
+@model DataTable
+<!--welcome-hero start -->
+<section id="home" class="welcome-hero" style="padding-top:5%">
+	<div class="container">
+		<div class="welcome-hero-txt">
+			<h2>get your desired car in resonable price</h2>
+			<p>
+				lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore   magna aliqua.
+			</p>
+			
 		</div>
 	</div>
-</div>
+
+</section><!--/.welcome-hero-->
+<!--welcome-hero end -->
+<!-------------------------------------------------------------------------------------------------------------------------------------->
+
+<main class="main" id="main">
+	<!--new-cars start -->
+	<section id="new-cars" class="new-cars" style="padding-top:10%">
+		<div class="container">
+			<div class="section-header">
+				<p>checkout <span>the</span> latest cars</p>
+				<h2>newest cars</h2>
+			</div><!--/.section-header-->
+			<div class="new-cars-content">
+				<div class="owl-carousel owl-theme" id="new-cars-carousel">
+					@foreach (DataRow dataRow in Model.Rows)
+					{
+						<div class="new-cars-item">
+							<div class="single-new-cars-item">
+								<div class="row">
+									<div class="col-md-7 col-sm-12">
+										<div class="new-cars-img">
+											<img src="@Url.Content(dataRow["ImgURL"].ToString())" alt="img" />
+										</div><!--/.new-cars-img-->
+									</div>
+									<div class="col-md-5 col-sm-12">
+										<div class="new-cars-txt">
+											<h2><a href="#">@dataRow["CarName"].ToString()</a></h2>
+											<p>
+												@dataRow["Description"].ToString()
+											</p>
+											<br>
+											<br>
+											<a asp-area="UserSide" asp-controller="UserSide" asp-action="NewCars_ViewDetail" asp-route-CarId="@dataRow["CarId"]">
+												<button type="button" class=" btn btn-primary">View Details</button>
+											</a>
+										</div><!--/.new-cars-txt-->
+									</div><!--/.col-->
+								</div><!--/.row-->
+							</div><!--/.single-new-cars-item-->
+						</div>
+
+						<!--/.new-cars-item-->
+					}
+				</div><!--/#new-cars-carousel-->
+			</div><!--/.new-cars-content-->
+		</div><!--/.container-->
+
+	</section><!--/.new-cars-->
+	<!--new-cars end -->
+
+</main>

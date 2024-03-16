@@ -1,0 +1,133 @@
+﻿@{
+	Layout = "_Layout_AdminPanel";
+}
+@model FeaturedCarsFormsModel;
+<main class="main" id="main">
+	<div class="body">
+		<section class="section">
+			<div class="row  justify-content-center">
+				<div class="col-lg-9">
+
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Featured Cars Form</h5>
+
+							<!-- General Form Elements -->
+                            <form asp-area="Admin" asp-controller="FeaturedCars" asp-action="FeaturedCarsSubmit">
+                                <div class="row mb-3">
+                                    <label for="inputText" class="col-sm-2 col-form-label">Image URL</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" asp-for="ImgURL" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputNumber" class="col-sm-2 col-form-label">Car Name</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" id="formFile" asp-for="CarName" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputNumber" class="col-sm-2 col-form-label">Brand Name</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="BrandID" name="BrandID" asp-for="@Model.BrandID">
+                                            <option value="">Select Car Brand</option>
+                                            @foreach (FeaturedCarsFormsModel BrandName in ViewBag.BrandList)
+                                            {
+                                                <option value="@BrandName.BrandID">@BrandName.BrandName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Price</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" asp-for="Price" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Engine Type</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="EngineTypeID" name="EngineTypeID" asp-for="@Model.EngineTypeID">
+                                            <option value="">Select Engine Type</option>
+                                            @foreach (FeaturedCarsFormsModel EngineType in ViewBag.EngineTypeList)
+                                            {
+                                                <option value="@EngineType.EngineTypeID">@EngineType.EngineType</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Fuel Type</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="FuelTypeID" name="FuelTypeID" asp-for="@Model.FuelTypeID">
+                                            <option value="">Select Fuel Type</option>
+                                            @foreach (FeaturedCarsFormsModel FuelType in ViewBag.FuelTypeList)
+                                            {
+                                                <option value="@FuelType.FuelTypeID">@FuelType.FuelType</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Model Year</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="ModelYearID" name="ModelYearID" asp-for="@Model.ModelYearID">
+                                            <option value="">Select Model Year</option>
+                                            @foreach (FeaturedCarsFormsModel ModelYear in ViewBag.ModelYearList)
+                                            {
+                                                <option value="@ModelYear.ModelYearID">@ModelYear.ModelYear</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" asp-for="Description" required>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Seating Capacity</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" asp-for="SeatingCapacity" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Mileage</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" asp-for="Mileage" required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="inputTime" class="col-sm-2 col-form-label">Transmission</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="TransmissionID" name="TransmissionID" asp-for="@Model.TransmissionID">
+                                            <option value="">Select Transmission Type</option>
+                                            @foreach (FeaturedCarsFormsModel TransmissionType in ViewBag.TransmissionTypeList)
+                                            {
+                                                <option value="@TransmissionType.TransmissionID">@TransmissionType.TransmissionType</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 justify-content-center">
+                                    <div class="col-sm-10 text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+
+
+                            </form><!-- End General Form Elements -->
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+	</div>
+</main>

@@ -1,0 +1,34 @@
+﻿<div class="featured-cars-content">
+	<div class="row">
+
+		@foreach (FeaturedCarsFormsModel Cars in ViewBag.FeaturedCarsAllList)
+		{
+
+			<div class="col-lg-3 col-md-4 col-sm-6" style="height: auto">
+				<div class="single-featured-cars">
+					<div class="featured-img-box">
+						<div class="featured-cars-img">
+							<img src="@Url.Content(@Cars.ImgURL.ToString())" alt="cars">
+						</div>
+						<div class="featured-model-info">
+							<p>
+								@Cars.TransmissionType.ToString()
+								<span class="featured-mi-span"></span>
+								@Cars.FuelType.ToString()
+							</p>
+						</div>
+					</div>
+					<div class="featured-cars-txt">
+						<h2><a>@Cars.BrandName.ToString() &nbsp;&nbsp; @Cars.CarName.ToString()</a></h2>
+						<h3><b>&#8377;</b>&nbsp;@Cars.Price.ToString()</h3>
+						<p>
+							@Cars.Description.ToString()
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+		}
+	</div>
+</div>

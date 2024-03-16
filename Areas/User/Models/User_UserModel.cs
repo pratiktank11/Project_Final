@@ -13,5 +13,7 @@ using System.ComponentModel.DataAnnotations;
         [Required]
         [DisplayName("Password")]
         public string Password { get; set; }
+
+        public string isAdmin { get; set; }
     }
 
