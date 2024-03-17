@@ -25,12 +25,11 @@ namespace Project_Final.Areas.Admin.Controllers
         public IActionResult FeaturedCarsSubmit(FeaturedCarsFormsModel featuredCarsFormsModel)
         {
 
-            if(featuredCarsFormsModel.CarID == null)
+            if(ModelState.IsValid)
             {
                 AdminDalBase adminDal = new AdminDalBase();
-                bool IsSuccess = adminDal.PR_Admin_FeaturedCars_Insert(featuredCarsFormsModel);
-
-                if (IsSuccess)
+               
+                if (adminDal.PR_Admin_FeaturedCars_Insert(featuredCarsFormsModel))
                 {
                     return RedirectToAction("FeaturedCars_Table", "AdminSide");
                 }
@@ -39,23 +38,7 @@ namespace Project_Final.Areas.Admin.Controllers
                     return RedirectToAction("FeaturedCars_Forms", "AdminSide");
                 }
             }
-            else
-            {
-                AdminDalBase adminDalBase = new AdminDalBase();
-
-
-                bool IsSuccess = adminDalBase.PR_Admin_FeaturedCars_UpdateByID(featuredCarsFormsModel);
-
-
-                if (IsSuccess)
-                {
-                    return RedirectToAction("FeaturedCars_Table", "AdminSide");
-                }
-                else
-                {
-                    return RedirectToAction("FeaturedCars_Forms", "AdminSide");
-                }
-            }
+           
 
         }
 
