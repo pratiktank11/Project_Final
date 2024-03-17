@@ -12,9 +12,10 @@ namespace Project_Final.DAL
 
         public bool PR_Admin_FeaturedCars_Insert(FeaturedCarsFormsModel model)
         {
+	        SqlDatabase sqlDatabase = new SqlDatabase(ConnectionString);
             try
             {
-                SqlDatabase sqlDatabase = new SqlDatabase(ConnectionString);
+	    if(featuredCarsFormsModel.CarID == 0)
 
                 DbCommand dbCommand1 = sqlDatabase.GetStoredProcCommand("PR_Admin_FeaturedCars_Insert");
                 sqlDatabase.AddInParameter(dbCommand1, "@ImgURL", SqlDbType.VarChar, model.ImgURL);
@@ -28,13 +29,25 @@ namespace Project_Final.DAL
                 sqlDatabase.AddInParameter(dbCommand1, "@EngineTypeID", SqlDbType.Int, model.EngineTypeID);
                 sqlDatabase.AddInParameter(dbCommand1, "@SeatingCapacity", SqlDbType.Int, model.SeatingCapacity);
                 sqlDatabase.AddInParameter(dbCommand1, "@Mileage", SqlDbType.Int, model.Mileage);
-                if (Convert.ToBoolean(sqlDatabase.ExecuteNonQuery(dbCommand1)))
-                {
-                    return true;
-                }
+               	return isSuccess;
+		}
                 else
                 {
-                    return false;
+                    
+                DbCommand dbCommand1 = sqlDatabase.GetStoredProcCommand("PR_Admin_FeaturedCars_UpdateByID");
+                sqlDatabase.AddInParameter(dbCommand1, "@CarID", SqlDbType.Int, featuredCarsFormsModel.CarID);
+                sqlDatabase.AddInParameter(dbCommand1, "@ImgURL", SqlDbType.VarChar, featuredCarsFormsModel.ImgURL);
+                sqlDatabase.AddInParameter(dbCommand1, "@ModelYearID", SqlDbType.Int, featuredCarsFormsModel.ModelYearID);
+                sqlDatabase.AddInParameter(dbCommand1, "@Price", SqlDbType.Decimal, featuredCarsFormsModel.Price);
+                sqlDatabase.AddInParameter(dbCommand1, "@Description", SqlDbType.VarChar, featuredCarsFormsModel.Description);
+                sqlDatabase.AddInParameter(dbCommand1, "@CarName", SqlDbType.VarChar, featuredCarsFormsModel.CarName);
+                sqlDatabase.AddInParameter(dbCommand1, "@BrandID", SqlDbType.Int, featuredCarsFormsModel.BrandID);
+                sqlDatabase.AddInParameter(dbCommand1, "@TransmissionID", SqlDbType.Int, featuredCarsFormsModel.TransmissionID);
+                sqlDatabase.AddInParameter(dbCommand1, "@FuelTypeID", SqlDbType.Int, featuredCarsFormsModel.FuelTypeID);
+                sqlDatabase.AddInParameter(dbCommand1, "@EngineTypeID", SqlDbType.Int, featuredCarsFormsModel.EngineTypeID);
+                sqlDatabase.AddInParameter(dbCommand1, "@SeatingCapacity", SqlDbType.Int, featuredCarsFormsModel.SeatingCapacity);
+                sqlDatabase.AddInParameter(dbCommand1, "@Mileage", SqlDbType.Int, featuredCarsFormsModel.Mileage);
+                return isSuccess;
                 }
 
             }
