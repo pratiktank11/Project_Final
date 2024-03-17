@@ -67,14 +67,8 @@ namespace Project_Final.DAL
                 sqlDatabase.AddInParameter(dbCommand1, "@EngineTypeID", SqlDbType.Int, featuredCarsFormsModel.EngineTypeID);
                 sqlDatabase.AddInParameter(dbCommand1, "@SeatingCapacity", SqlDbType.Int, featuredCarsFormsModel.SeatingCapacity);
                 sqlDatabase.AddInParameter(dbCommand1, "@Mileage", SqlDbType.Int, featuredCarsFormsModel.Mileage);
-                if (Convert.ToBoolean(sqlDatabase.ExecuteNonQuery(dbCommand1)))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return isSuccess;
+		}
 
             }
             catch (Exception ex)
