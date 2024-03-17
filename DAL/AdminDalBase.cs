@@ -58,39 +58,7 @@ namespace Project_Final.DAL
 
         }   
 
-        #endregion
-
-        #region Method : PR_Admin_FeaturedCars_UpdateByID]
-
-        public bool PR_Admin_FeaturedCars_UpdateByID(FeaturedCarsFormsModel featuredCarsFormsModel)
-        {
-            try
-            {
-                SqlDatabase sqlDatabase = new SqlDatabase(ConnectionString);
-                DbCommand dbCommand1 = sqlDatabase.GetStoredProcCommand("PR_Admin_FeaturedCars_UpdateByID");
-                sqlDatabase.AddInParameter(dbCommand1, "@CarID", SqlDbType.Int, featuredCarsFormsModel.CarID);
-                sqlDatabase.AddInParameter(dbCommand1, "@ImgURL", SqlDbType.VarChar, featuredCarsFormsModel.ImgURL);
-                sqlDatabase.AddInParameter(dbCommand1, "@ModelYearID", SqlDbType.Int, featuredCarsFormsModel.ModelYearID);
-                sqlDatabase.AddInParameter(dbCommand1, "@Price", SqlDbType.Decimal, featuredCarsFormsModel.Price);
-                sqlDatabase.AddInParameter(dbCommand1, "@Description", SqlDbType.VarChar, featuredCarsFormsModel.Description);
-                sqlDatabase.AddInParameter(dbCommand1, "@CarName", SqlDbType.VarChar, featuredCarsFormsModel.CarName);
-                sqlDatabase.AddInParameter(dbCommand1, "@BrandID", SqlDbType.Int, featuredCarsFormsModel.BrandID);
-                sqlDatabase.AddInParameter(dbCommand1, "@TransmissionID", SqlDbType.Int, featuredCarsFormsModel.TransmissionID);
-                sqlDatabase.AddInParameter(dbCommand1, "@FuelTypeID", SqlDbType.Int, featuredCarsFormsModel.FuelTypeID);
-                sqlDatabase.AddInParameter(dbCommand1, "@EngineTypeID", SqlDbType.Int, featuredCarsFormsModel.EngineTypeID);
-                sqlDatabase.AddInParameter(dbCommand1, "@SeatingCapacity", SqlDbType.Int, featuredCarsFormsModel.SeatingCapacity);
-                sqlDatabase.AddInParameter(dbCommand1, "@Mileage", SqlDbType.Int, featuredCarsFormsModel.Mileage);
-                return isSuccess;
-		}
-
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-        #endregion
+     
 
         #region Method : Featured Cars SelectAll (Active)
         public DataTable FeaturedCarsSellectAll()
